@@ -1,0 +1,54 @@
+﻿@model DogGo.Models.ViewModels.WalkerProfileViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+    <h1 class="mb-4">Walker Profile</h1>
+
+    <section class="container">
+        <img style="width:100px;float:left;margin-right:20px"
+             src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Font_Awesome_5_regular_user-circle.svg" />
+        <div>
+            <label class="font-weight-bold">Name:</label>
+            <span>@Model.Walker.Name</span>
+            <label class="font-weight-bold">Neighborhood:</label>
+            <span>@Model.Neighborhood.Name</span>
+        </div>
+    </section>
+
+    <hr class="mt-5" />
+    <div class="clearfix"></div>
+
+    <div class="row">
+        <section class="col-8 container mt-5">
+            <h1 class="text-left">Recent Walks</h1>
+
+            <div class="row">
+                @foreach (Walks walk in Model.Walks)
+                {
+                    <div class="card m-4" style="width: 18rem;">
+                        
+                        <div class="card-body">
+                            <div>
+                                <label class="font-weight-bold">Date:</label>
+                                <span>@walk.Date</span>
+                            </div>
+                            <div>
+                                <label class="font-weight-bold">Duration:</label>
+                                <span>@walk.Duration seconds</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </section>
+
+        <section class="col-lg-4 col-md-8 container mt-5">
+            <h1>Total Walk Time</h1>
+            <h3>@Model.TotalWalkTime</h3>
+            
+        </section>
+    </div>
+</div>
